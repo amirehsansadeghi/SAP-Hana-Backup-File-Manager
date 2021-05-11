@@ -1,4 +1,4 @@
-import smtplib
+import smtplib,socket
 from email.mime.text import MIMEText
 
 def test_email(smtp_server,smtp_port,smtp_username,smtp_password,tls,mail_address):
@@ -30,15 +30,15 @@ def sendemail(smtp_server,smtp_port,smtp_username,smtp_password,tls,mail_address
     
     message = '''
 Dear SAP Basis Administrator
-hello 
-
+Hello 
+this is agent runned on %s server hostname 
 The actions mentioned below are according to your configuration file, please check: 
 
  %s
 
 Best Regards
 SAP HANA Backup File Manager Agent
-    ''' %(function_message)
+    ''' %(socket.gethostname(),function_message)
     
     with smtplib.SMTP(smtp_server, smtp_port) as server:
         msg =MIMEText(message)
