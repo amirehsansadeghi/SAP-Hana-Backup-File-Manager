@@ -32,6 +32,5 @@ def manage_file(general_dict,dev_dict):
         if msg1=='' : 
             output_msg=msg
         else : 
-            #print(msg1)   
             output_msg=msg1  
     return output_msg

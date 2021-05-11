@@ -34,6 +34,7 @@ if (sys.version_info.major == 3 )  and (sys.version_info.minor >= 2 ) :
             if qua!='' : print(qua)
             if prd!='' : print(prd)
             if sdb!='' : print(sdb)
+            
         function_message = ''
         if snd != '' : function_message = function_message+(snd+'\n')
         if dev != '' : function_message = function_message+(dev+'\n')
