@@ -9,11 +9,13 @@ def move(source,destination):
         src=source+file_name
         shutil.move(src,destination)
         count=count+1
+    file_count = len(files_name)
     get_date = get_time_date.get_time_date()
     get_time = get_time_date.get_system_time()
-    status = 'Success'
-    msg = '''at the %s %s time, all files is %i and moved %i files from %s to %s \033[32m %s \x1b[0m
+    status = ''
+    msg = '''at the %s %s time, all files is %i and moved %i files from %s to %s  %s 
     ''' %(get_date,get_time,file_count,count,source,destination,status)
+    return msg
 
 def copy(source,destination):
     count=0
@@ -25,8 +27,8 @@ def copy(source,destination):
     file_count = len(file_names)
     get_date = get_time_date.get_time_date()
     get_time = get_time_date.get_system_time()
-    status = 'Success'
-    msg = '''at the %s %s time, all files is %i and copied %i files from %s to %s \033[32m %s \x1b[0m
+    status = ''
+    msg = '''at the %s %s time, all files is %i and copied %i files from %s to %s  %s 
     ''' %(get_date,get_time,file_count,count,source,destination,status)
     return msg    
 

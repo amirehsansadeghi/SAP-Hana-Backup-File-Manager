@@ -24,17 +24,21 @@ def test_email(smtp_server,smtp_port,smtp_username,smtp_password,tls,mail_addres
         mail.login(smtp_username, smtp_password)
         mail.sendmail(smtp_username, mail_address, msg.as_string())
         mail.quit()
+        exit()
 
 def sendemail(smtp_server,smtp_port,smtp_username,smtp_password,tls,mail_address,function_message):
+    
+    message = function_message
     with smtplib.SMTP(smtp_server, smtp_port) as server:
         msg = MIMEText(message)
-        msg['Subject'] = "HANA Backup File Manager Agent"
+        msg['Subject'] = "SAP HANA Backup File Manager Agent"
         msg['From'] = smtp_username
-        msg['To'] = mail_address
-        #ebuglevel = True
+        #debuglevel = True
         mail = smtplib.SMTP(smtp_server, smtp_port)
         #mail.set_debuglevel(debuglevel)
         if tls =='yes' : mail.starttls()
         mail.login(smtp_username, smtp_password)
-        mail.sendmail(smtp_username, mail_address, function_message.as_string())
+        for item,email_address in mail_address.items():
+            msg['To'] = email_address
+            mail.sendmail(smtp_username, email_address, msg.as_string())
         mail.quit()

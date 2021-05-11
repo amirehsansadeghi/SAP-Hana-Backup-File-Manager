@@ -34,6 +34,17 @@ if (sys.version_info.major == 3 )  and (sys.version_info.minor >= 2 ) :
             if qua!='' : print(qua)
             if prd!='' : print(prd)
             if sdb!='' : print(sdb)
+        function_message = ''
+        if snd != '' : function_message = function_message+(snd+'\n')
+        if dev != '' : function_message = function_message+(dev+'\n')
+        if qua != '' : function_message = function_message+(qua+'\n')
+        if prd != '' : function_message = function_message+(prd+'\n')
+        if sdb != '' : function_message = function_message+(sdb+'\n')
+
+        if email_dict['enabled'] == 'true' and function_message !='' :
+                    email_gateway.sendemail(email_dict['smtp_server'],
+                    email_dict['smtp_port'],email_dict['sender_username'],
+                    email_dict['sender_password'],email_dict['tls'],email_send_list,function_message)
     
     else : 
         generate_config_file.generate()

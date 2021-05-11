@@ -14,23 +14,22 @@ def manage_file(general_dict,dev_dict):
             if path.exists(dev_dict['log_file']) and path.exists(dev_dict['data_file']):
                 msg1 = '%s : \n' %(dev_dict['name'])
                 if dev_dict['action'] == 'mv':
-                    msg1=msg1+'\n'+archive.move(dev_dict['log_file'],arch_log_path)
+                     msg1=msg1+'\n'+archive.move(dev_dict['log_file'],arch_log_path)
                 if dev_dict['action'] == 'cp':
-                    msg1=msg1+'\n'+archive.copy(dev_dict['log_file'],arch_log_path)
+                     msg1=msg1+'\n'+archive.copy(dev_dict['log_file'],arch_log_path)
         if path.exists(arch_data_path):
             if path.exists(dev_dict['data_file']) and path.exists(dev_dict['log_file']):
                 msg = '%s : \n' %(dev_dict['name'])
                 if dev_dict['action'] == 'mv':
-                    msg1=msg1+'\n'+archive.move(dev_dict['data_file'],arch_data_path)
+                     msg1=msg1+'\n'+archive.move(dev_dict['data_file'],arch_data_path)
                 if dev_dict['action'] == 'cp':
-                    msg1=msg1+'\n'+archive.copy(dev_dict['data_file'],arch_data_path)
+                     msg1=msg1+'\n'+archive.copy(dev_dict['data_file'],arch_data_path)
         msg = '%s : \n' %(dev_dict['name'])
         if not path.exists(dev_dict['log_file']):
             msg=msg + 'log  file path does not exists \n'
         if not path.exists(dev_dict['data_file']):
             msg=msg + 'data file path does not exists \n'
         if msg1=='' : 
-            #print(msg)
             output_msg=msg
         else : 
             #print(msg1)   
