@@ -51,6 +51,5 @@ SAP HANA Backup File Manager Agent
         mail.login(smtp_username, smtp_password)
         for item,email_address in mail_address.items():
             msg['To'] = email_address
-            print(msg)
             mail.sendmail(smtp_username, email_address, msg.as_string())
         mail.quit()
