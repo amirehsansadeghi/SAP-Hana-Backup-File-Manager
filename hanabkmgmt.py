@@ -5,6 +5,7 @@ from modules import folder_check_create as fcc
 from modules import generate_config_file
 from modules import manage_archives
 from modules import email_gateway
+from modules import report
 from operation_files import sandbox,development,quality,production,systemdb
 from os import path
 import sys
@@ -34,13 +35,8 @@ if (sys.version_info.major == 3 )  and (sys.version_info.minor >= 2 ) :
             if qua!='' : print(qua)
             if prd!='' : print(prd)
             if sdb!='' : print(sdb)
-            
-        function_message = ''
-        if snd != '' : function_message = function_message+(snd+'\n')
-        if dev != '' : function_message = function_message+(dev+'\n')
-        if qua != '' : function_message = function_message+(qua+'\n')
-        if prd != '' : function_message = function_message+(prd+'\n')
-        if sdb != '' : function_message = function_message+(sdb+'\n')
+
+        function_message=report.daily_report(snd,dev,qua,prd,sdb)
 
         if email_dict['enabled'] == 'true' and function_message !='' :
                     email_gateway.sendemail(email_dict['smtp_server'],

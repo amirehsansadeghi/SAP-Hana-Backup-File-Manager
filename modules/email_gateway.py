@@ -28,9 +28,20 @@ def test_email(smtp_server,smtp_port,smtp_username,smtp_password,tls,mail_addres
 
 def sendemail(smtp_server,smtp_port,smtp_username,smtp_password,tls,mail_address,function_message):
     
-    message = function_message
+    message = '''
+Dear SAP Basis Administrator
+hello 
+
+The actions mentioned below are according to your configuration file, please check: 
+
+ %s
+
+Best Regards
+SAP HANA Backup File Manager Agent
+    ''' %(function_message)
+    
     with smtplib.SMTP(smtp_server, smtp_port) as server:
-        msg = MIMEText(message)
+        msg =MIMEText(message)
         msg['Subject'] = "SAP HANA Backup File Manager Agent"
         msg['From'] = smtp_username
         #debuglevel = True
@@ -40,5 +51,6 @@ def sendemail(smtp_server,smtp_port,smtp_username,smtp_password,tls,mail_address
         mail.login(smtp_username, smtp_password)
         for item,email_address in mail_address.items():
             msg['To'] = email_address
+            print(msg)
             mail.sendmail(smtp_username, email_address, msg.as_string())
         mail.quit()
