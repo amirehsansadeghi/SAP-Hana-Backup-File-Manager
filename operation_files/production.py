@@ -1,6 +1,7 @@
 from modules import folder_check_create as fcc
 from modules import check_configuration  as configuration
 from modules import archive_bk_files as archive
+from modules import manage_archives
 from os import path
 
 def manage_file(general_dict,prd_dict):
@@ -30,9 +31,7 @@ def manage_file(general_dict,prd_dict):
         if not path.exists(prd_dict['data_file']):
             msg=msg + 'data file path does not exists \n'
         if msg1=='' : 
-            #print(msg)
             output_msg=msg
         else : 
-            #print(msg1)   
             output_msg=msg1  
     return output_msg

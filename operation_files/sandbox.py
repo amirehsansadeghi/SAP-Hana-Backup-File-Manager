@@ -1,6 +1,7 @@
 from modules import folder_check_create as fcc
 from modules import check_configuration  as configuration
 from modules import archive_bk_files as archive
+from modules import manage_archives
 from os import path
 
 def manage_file(general_dict,snd_dict):

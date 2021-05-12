@@ -1,5 +1,6 @@
 import smtplib,socket
 from email.mime.text import MIMEText
+from sys import exit
 
 def test_email(smtp_server,smtp_port,smtp_username,smtp_password,tls,mail_address):
     message = """
@@ -32,7 +33,7 @@ def sendemail(smtp_server,smtp_port,smtp_username,smtp_password,tls,mail_address
 Dear SAP Basis Administrator
 Hello 
 this is agent runned on %s server hostname 
-The actions mentioned below are according to your configuration file, please check: 
+the actions mentioned below are according to your configuration file, please check: 
 
  %s
 
